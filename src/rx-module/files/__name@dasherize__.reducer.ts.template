@@ -1,0 +1,16 @@
+import { I<%= classify(name) %>State } from './<%= dasherize(name) %>.model';
+import { <%= classify(name) %>Actions } from './<%= dasherize(name) %>.actions';
+
+export const initialState: I<%= classify(name) %>State = {
+  loading: false
+};
+
+export function <%= classify(name) %>Reducer(
+  state: I<%= classify(name) %>State = initialState,
+  action: <%= classify(name) %>Actions
+): I<%= classify(name) %>State {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}

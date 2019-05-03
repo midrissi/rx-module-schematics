@@ -1,0 +1,27 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SuiSelectModule } from 'ng2-semantic-ui';
+import { EffectsModule } from '@ngrx/effects';
+import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+
+import { <%= classify(name) %>RoutingModule } from './<%= dasherize(name) %>-routing.module';
+import { ContainerComponent } from './components/container/container.component';
+import { <%= classify(name) %>Service } from './<%= dasherize(name) %>.service';
+import { <%= classify(name) %>Effects } from './<%= dasherize(name) %>.effects';
+import { <%= classify(name) %>Reducer } from './<%= dasherize(name) %>.reducer';
+
+@NgModule({
+  declarations: [ContainerComponent],
+  imports: [
+    CommonModule,
+    CommonModule,
+    FormsModule,
+    SuiSelectModule,
+    <%= classify(name) %>RoutingModule,
+    StoreModule.forFeature('<%= dasherize(name) %>', <%= classify(name) %>Reducer),
+    EffectsModule.forFeature([<%= classify(name) %>Effects])
+  ],
+  providers: [<%= classify(name) %>Service]
+})
+export class <%= classify(name) %>Module {}
