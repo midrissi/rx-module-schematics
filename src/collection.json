@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "rx-module": {
+    "ng-add": {
       "description": "Rx Module.",
       "factory": "./rx-module/index#rxModule",
       "schema": "./rx-module/schema.json"
