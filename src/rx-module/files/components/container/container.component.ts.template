@@ -4,12 +4,12 @@ import { Store } from '@ngrx/store';
 import { State } from '../../<%= dasherize(name) %>.model';
 
 @Component({
-  selector: 'app-router-designer',
+  selector: 'app-<%= dasherize(name) %>',
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContainerComponent implements OnInit {
+export class <%= classify(name) %>ContainerComponent implements OnInit {
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store<State>) {}

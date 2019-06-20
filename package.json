@@ -1,6 +1,6 @@
 {
   "name": "schematics-rx-module",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "An Rx module schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",

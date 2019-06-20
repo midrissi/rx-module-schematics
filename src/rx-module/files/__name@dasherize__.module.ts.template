@@ -6,13 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 
 import { <%= classify(name) %>RoutingModule } from './<%= dasherize(name) %>-routing.module';
-import { ContainerComponent } from './components/container/container.component';
+import { <%= classify(name) %>ContainerComponent } from './components/container/container.component';
 import { <%= classify(name) %>Service } from './<%= dasherize(name) %>.service';
 import { <%= classify(name) %>Effects } from './<%= dasherize(name) %>.effects';
 import { <%= classify(name) %>Reducer } from './<%= dasherize(name) %>.reducer';
 
 @NgModule({
-  declarations: [ContainerComponent],
+  declarations: [<%= classify(name) %>ContainerComponent],
   imports: [
     CommonModule,
     CommonModule,
