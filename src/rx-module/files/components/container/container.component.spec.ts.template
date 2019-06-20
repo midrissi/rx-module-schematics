@@ -7,7 +7,7 @@ import { SharedModule } from '@app/shared';
 
 import { State, I<%= classify(name) %>State } from '../../<%= name %>.model';
 import { <%= classify(name) %>Service } from '../../<%= name %>.service';
-import { ContainerComponent } from './container.component';
+import { <%= classify(name) %>ContainerComponent } from './container.component';
 
 function createState(state: I<%= classify(name) %>State): State {
   return {
@@ -15,14 +15,14 @@ function createState(state: I<%= classify(name) %>State): State {
   } as State;
 }
 
-describe('ContainerComponent', () => {
-  let component: ContainerComponent;
-  let fixture: ComponentFixture<ContainerComponent>;
+describe('<%= classify(name) %>ContainerComponent', () => {
+  let component: <%= classify(name) %>ContainerComponent;
+  let fixture: ComponentFixture<<%= classify(name) %>ContainerComponent>;
   let store: MockStore<State>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ContainerComponent],
+      declarations: [<%= classify(name) %>ContainerComponent],
       imports: [CoreModule, TestingModule, SharedModule],
       providers: [<%= classify(name) %>Service]
     }).compileComponents();
@@ -36,7 +36,7 @@ describe('ContainerComponent', () => {
       }),
     );
 
-    fixture = TestBed.createComponent(ContainerComponent);
+    fixture = TestBed.createComponent(<%= classify(name) %>ContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

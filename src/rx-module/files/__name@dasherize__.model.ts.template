@@ -1,4 +1,4 @@
-import { State as AppState } from '@app/toolbar/toolbar.model';
+import { AppState } from "@app/core";
 
 export interface I<%= classify(name) %>State {
   loading: boolean;

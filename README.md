@@ -20,7 +20,6 @@ schematics --help
 To publish, simply do:
 
 ```bash
-npm run build
 npm publish
 ```
 
