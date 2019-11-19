@@ -7,6 +7,7 @@ This repository is a basic Schematic implementation that serves as a starting po
 To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
 
 Check the documentation with
+
 ```bash
 schematics --help
 ```
@@ -23,5 +24,14 @@ To publish, simply do:
 npm publish
 ```
 
+### Debug
+
+`Prerequisite`: `@angular-devkit/schematics` should be installed globally.
+
+To debug, run this command line in your angular project:
+
+```bash
+node --inspect-brk `which schematics` schematics-rx-module:ng-add --dry-run --name=hello
+```
+
 That's it!
- 

@@ -1,17 +1,17 @@
+import { join, normalize, strings } from '@angular-devkit/core';
 import {
-  url,
-  Rule,
-  move,
-  Tree,
   apply,
-  template,
-  mergeWith,
+  chain,
   MergeStrategy,
-  SchematicContext,
-  renameTemplateFiles
+  mergeWith,
+  move,
+  renameTemplateFiles,
+  Rule,
+  template,
+  Tree,
+  url,
 } from '@angular-devkit/schematics';
 import { getWorkspace } from '@schematics/angular/utility/config';
-import { strings, join, normalize } from '@angular-devkit/core';
 
 export function setupOptions(host: Tree, options: any): Tree {
   const workspace = getWorkspace(host);
@@ -24,27 +24,49 @@ export function setupOptions(host: Tree, options: any): Tree {
   return host;
 }
 
-export function rxModule(_options: any): Rule {
-  return (tree: Tree, _context: SchematicContext) => {
-    setupOptions(tree, _options);
+function buildSelector(options: any, projectPrefix: string) {
+  let selector = strings.dasherize(options.name);
+  if (options.prefix) {
+    selector = `${options.prefix}-${selector}`;
+  } else if (options.prefix === undefined && projectPrefix) {
+    selector = `${projectPrefix}-${selector}`;
+  }
 
-    const movePath = normalize(`${_options.path}/app/modules/${strings.dasherize(_options.name)}`);
+  return selector;
+}
+
+export function rxModule(options: any): Rule {
+  return async (tree: Tree) => {
+    setupOptions(tree, options);
+
+    const workspace = await getWorkspace(tree);
+    const project = workspace.projects[options.project];
+    const selector =
+      options.selector ||
+      buildSelector(options, (project && project.prefix) || '');
+
+    const movePath = normalize(
+      `${options.path}/app/modules/${strings.dasherize(options.name)}`,
+    );
     const templateSource = apply(url('./files'), [
       template({
-        ..._options,
+        selector,
+        ...options,
         ...strings,
         huminize: (str: string) => {
-          if(typeof str !== 'string') {
+          if (typeof str !== 'string') {
             return '';
           }
 
-          return str.split('-').map(strings.capitalize).join(' ');
-        }
+          return str
+            .split('-')
+            .map(strings.capitalize)
+            .join(' ');
+        },
       }),
       renameTemplateFiles(),
-      move(movePath)
+      move(movePath),
     ]);
-    const rule = mergeWith(templateSource, MergeStrategy.Overwrite);
-    return rule(tree, _context);
+    return chain([mergeWith(templateSource, MergeStrategy.Overwrite)]);
   };
 }

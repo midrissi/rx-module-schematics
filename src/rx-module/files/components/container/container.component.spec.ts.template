@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MockStore, TestingModule } from '@testing/utils';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { Store } from '@ngrx/store';
 
 import { CoreModule } from '@app/core';
@@ -24,7 +24,14 @@ describe('<%= classify(name) %>ContainerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [<%= classify(name) %>ContainerComponent],
       imports: [CoreModule, TestingModule, SharedModule],
-      providers: [<%= classify(name) %>Service]
+      providers: [
+        <%= classify(name) %>Service,
+        provideMockStore({
+          initialState: createState({
+            loading: false
+          })
+        }),
+      ]
     }).compileComponents();
   }));
 

@@ -1,4 +1,4 @@
-import { AppState } from "@app/core";
+import { AppState } from '@app/core';
 
 export interface I<%= classify(name) %>State {
   loading: boolean;

@@ -3,25 +3,55 @@
   "version": "0.1.9",
   "description": "An Rx module schematics",
   "scripts": {
+    "pretest": "npm run lint",
+    "lint": "tslint --project .",
+    "lint:fix": "tslint --project . --fix",
     "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc --watch -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js",
-    "prepublish": "npm run build"
+    "prepare": "npm run build",
+    "release:major": "release-it major",
+    "release:minor": "release-it minor",
+    "release:patch": "release-it patch"
+  },
+  "repository": {
+    "url": "https://github.com/midrissi/rx-module-schematics.git",
+    "type": "git"
   },
   "keywords": [
     "schematics"
   ],
-  "author": "",
+  "author": "Mohamed IDRISSI<med.idrissi@outlook.com>",
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
-    "@angular-devkit/core": "^7.3.9",
-    "@angular-devkit/schematics": "^7.3.9",
-    "@types/jasmine": "^3.4.4",
-    "@types/node": "^8.10.55",
-    "jasmine": "^3.5.0",
-    "typescript": "~3.2.2"
+    "@schematics/angular": "^8.3.19",
+    "@angular-devkit/core": "^8.3.19",
+    "@angular-devkit/schematics": "^8.3.19"
   },
   "devDependencies": {
-    "@schematics/angular": "^7.3.9"
+    "@angular-devkit/schematics-cli": "^0.803.19",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@types/jasmine": "^3.4.6",
+    "@types/node": "^12.12.9",
+    "husky": "^3.1.0",
+    "jasmine": "^3.5.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "release-it": "^12.4.3",
+    "tslint": "^5.20.1",
+    "typescript": "~3.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
