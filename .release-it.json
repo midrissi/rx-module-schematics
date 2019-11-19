@@ -1,0 +1,14 @@
+{
+  "src": {
+    "tagName": "v%s"
+  },
+  "git": {
+    "tagName": "v${version}",
+    "requireCleanWorkingDir": false,
+    "commitMessage": "ci: release v${version}",
+    "push": true
+  },
+  "github": {
+    "release": true
+  }
+}
