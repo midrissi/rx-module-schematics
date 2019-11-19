@@ -36,10 +36,10 @@ function buildSelector(options: any, projectPrefix: string) {
 }
 
 export function rxModule(options: any): Rule {
-  return async (tree: Tree) => {
+  return (tree: Tree) => {
     setupOptions(tree, options);
 
-    const workspace = await getWorkspace(tree);
+    const workspace = getWorkspace(tree);
     const project = workspace.projects[options.project];
     const selector =
       options.selector ||
