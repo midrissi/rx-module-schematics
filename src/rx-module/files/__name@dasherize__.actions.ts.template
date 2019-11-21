@@ -1,11 +1,5 @@
-import { Action } from '@ngrx/store';
+import { createAction } from '@ngrx/store';
 
-export enum <%= classify(name) %>ActionTypes {
-  ACTION_TYPE_EXAMPLE = '[<%= name %>] Action example'
-}
-
-export class Action<%= classify(name) %>Example implements Action {
-  readonly type = <%= classify(name) %>ActionTypes.ACTION_TYPE_EXAMPLE;
-}
-
-export type <%= classify(name) %>Actions = Action<%= classify(name) %>Example;
+export const action<%= classify(name) %>Example = createAction(
+  '[<%= name %>] Action example',
+);

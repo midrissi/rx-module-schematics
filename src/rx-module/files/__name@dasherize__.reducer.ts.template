@@ -1,16 +1,24 @@
 import { I<%= classify(name) %>State } from './<%= dasherize(name) %>.model';
-import { <%= classify(name) %>Actions } from './<%= dasherize(name) %>.actions';
+import { createReducer, Action, on } from '@ngrx/store';
+import { action<%= classify(name) %>Example } from './<%= dasherize(name) %>.actions';
 
 export const initialState: I<%= classify(name) %>State = {
   loading: false
 };
 
-export function <%= classify(name) %>Reducer(
-  state: I<%= classify(name) %>State = initialState,
-  action: <%= classify(name) %>Actions
-): I<%= classify(name) %>State {
-  switch (action.type) {
-    default:
+const reducer = createReducer(
+  initialState,
+  on(
+    action<%= classify(name) %>Example,
+    (state, action) => {
       return state;
-  }
+    }
+  ),
+)
+
+export function <%= classify(name) %>Reducer(
+  state: I<%= classify(name) %>State,
+  action: Action
+) {
+  return reducer(state, action);
 }
