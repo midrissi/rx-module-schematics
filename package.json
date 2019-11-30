@@ -25,16 +25,16 @@
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
-    "@schematics/angular": "^8.3.19",
-    "@angular-devkit/core": "^8.3.19",
-    "@angular-devkit/schematics": "^8.3.19"
+    "@schematics/angular": "^8.3.20",
+    "@angular-devkit/core": "^8.3.20",
+    "@angular-devkit/schematics": "^8.3.20"
   },
   "devDependencies": {
-    "@angular-devkit/schematics-cli": "^0.803.19",
+    "@angular-devkit/schematics-cli": "^0.803.20",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
-    "@types/jasmine": "^3.4.6",
-    "@types/node": "^12.12.9",
+    "@types/jasmine": "^3.5.0",
+    "@types/node": "^12.12.14",
     "husky": "^3.1.0",
     "jasmine": "^3.5.0",
     "prettier": "^1.19.1",
