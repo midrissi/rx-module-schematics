@@ -8,4 +8,4 @@ import { <%= classify(name) %>MainContainer } from './main.container';
   providers: [StrategyService],
   declarations: [<%= classify(name) %>MainContainer]
 })
-export class MainContainerModule {}
+export class <%= classify(name) %>MainContainerModule {}

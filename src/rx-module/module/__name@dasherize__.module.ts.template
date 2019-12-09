@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { <%= classify(name) %>RoutingModule } from './<%= dasherize(name) %>-routing.module';
 import {
-  MainContainerModule,
+  <%= classify(name) %>MainContainerModule,
 } from './containers/main';
 import { <%= classify(name) %>Service } from './<%= dasherize(name) %>.service';
 import { <%= classify(name) %>Effects } from './<%= dasherize(name) %>.effects';
@@ -14,7 +14,7 @@ import { <%= classify(name) %>Reducer } from './<%= dasherize(name) %>.reducer';
   declarations: [],
   imports: [
     <%= classify(name) %>RoutingModule,
-    MainContainerModule,
+    <%= classify(name) %>MainContainerModule,
     StoreModule.forFeature('<%= dasherize(name) %>', <%= classify(name) %>Reducer),
     EffectsModule.forFeature([<%= classify(name) %>Effects])
   ],

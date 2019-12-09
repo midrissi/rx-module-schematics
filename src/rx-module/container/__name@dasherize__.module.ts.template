@@ -8,4 +8,4 @@ import { <%= classify(module) %><%= classify(name) %>Container } from './<%= das
   providers: [StrategyService],
   declarations: [<%= classify(module) %><%= classify(name) %>Container]
 })
-export class <%= classify(name) %>ContainerModule {}
+export class <%= classify(module) %><%= classify(name) %>ContainerModule {}
