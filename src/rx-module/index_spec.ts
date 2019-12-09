@@ -56,7 +56,7 @@ describe('rx-module', () => {
           `${basePath}/${schemaOptions.name}.service.ts`,
         );
         const containerContent = tree.readContent(
-          `${basePath}/components/container/container.component.html`,
+          `${basePath}/containers/main/main.container.html`,
         );
         expect(serviceContent).toContain('export class FooService');
         expect(containerContent).toContain('Foo Works!');

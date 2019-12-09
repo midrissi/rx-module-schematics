@@ -45,10 +45,36 @@ export function rxModule(options: any): Rule {
       options.selector ||
       buildSelector(options, (project && project.prefix) || '');
 
-    const movePath = normalize(
-      `${options.path}/app/modules/${strings.dasherize(options.name)}`,
-    );
-    const templateSource = apply(url('./files'), [
+    let movePath;
+    let templateUrl;
+
+    switch (true) {
+      case options.container === true: {
+        const module = options.module;
+
+        if (!module || typeof module !== 'string') {
+          throw new Error(
+            'You should specify the module. Example: --module=todo',
+          );
+        }
+
+        templateUrl = url('./container');
+        movePath = normalize(
+          `${options.path}/app/modules/${strings.dasherize(
+            options.module,
+          )}/containers/${options.name}`,
+        );
+        break;
+      }
+      default:
+        templateUrl = url('./module');
+        movePath = normalize(
+          `${options.path}/app/modules/${strings.dasherize(options.name)}`,
+        );
+        break;
+    }
+
+    const templateSource = apply(templateUrl, [
       template({
         selector,
         ...options,

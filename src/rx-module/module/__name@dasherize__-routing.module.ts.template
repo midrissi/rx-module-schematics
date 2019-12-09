@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { <%= classify(name) %>ContainerComponent } from './components/container/container.component';
+import { <%= classify(name) %>MainContainer } from './containers/main';
 
 const routes: Routes = [
   {
     path: '',
-    component: <%= classify(name) %>ContainerComponent,
+    component: <%= classify(name) %>MainContainer,
     data: { title: 'app.<%= dasherize(name) %>.main.title' }
   }
 ];

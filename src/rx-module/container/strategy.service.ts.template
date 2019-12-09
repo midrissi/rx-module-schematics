@@ -1,0 +1,37 @@
+import { Injectable } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import { State, I<%= classify(module) %>State } from '../../<%= dasherize(module) %>.model';
+import { select<%= classify(module) %>State } from '../../selectors';
+import { takeUntil } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class StrategyService {
+  private unsubscribe$: Subject<void> = new Subject<void>();
+
+  state$: Observable<I<%= classify(module) %>State>;
+
+  constructor(private store: Store<State>) {}
+
+  /**
+   * Initialize subscribers & event listeners
+   */
+  listen() {
+    this.state$ = this.store
+      .select(select<%= classify(module) %>State)
+      .pipe(
+        takeUntil(this.unsubscribe$)
+      )
+  }
+
+  /**
+   * Stop listening
+   */
+  unlisten() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+}

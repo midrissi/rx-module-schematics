@@ -1,0 +1,3 @@
+<p>
+  <%= huminize(name) %> Works!
+</p>

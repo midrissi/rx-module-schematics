@@ -1,5 +1,5 @@
 import { createAction } from '@ngrx/store';
 
 export const action<%= classify(name) %>Example = createAction(
-  '[<%= name %>] Action example',
+  '[<%= dasherize(name) %>] Action example',
 );

@@ -1,0 +1,20 @@
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { StrategyService } from './strategy.service';
+
+@Component({
+  selector: '<%= selector %>',
+  templateUrl: './<%= dasherize(name) %>.container.html',
+  styleUrls: ['./<%= dasherize(name) %>.container.scss'],
+})
+export class <%= classify(module) %><%= classify(name) %>Container implements OnInit, OnDestroy {
+  constructor(public readonly strategy: StrategyService) {}
+
+  ngOnDestroy() {
+    this.strategy.unlisten();
+  }
+
+  ngOnInit() {
+    this.strategy.listen();
+  }
+}

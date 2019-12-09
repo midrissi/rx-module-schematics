@@ -1,0 +1,11 @@
+import { NgModule } from '@angular/core';
+
+import { StrategyService } from './strategy.service';
+import { <%= classify(name) %>MainContainer } from './main.container';
+
+@NgModule({
+  imports: [],
+  providers: [StrategyService],
+  declarations: [<%= classify(name) %>MainContainer]
+})
+export class MainContainerModule {}

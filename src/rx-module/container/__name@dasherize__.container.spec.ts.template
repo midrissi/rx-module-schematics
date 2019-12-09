@@ -1,0 +1,51 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { Store } from '@ngrx/store';
+
+import { State, I<%= classify(module) %>State } from '../../<%= dasherize(module) %>.model';
+import { <%= classify(module) %>Service } from '../../<%= dasherize(module) %>.service';
+import { <%= classify(module) %><%= classify(name) %>Container } from './<%= dasherize(name) %>.container';
+
+function createState(state: I<%= classify(module) %>State): State {
+  return {
+    '<%= dasherize(module) %>': state
+  } as State;
+}
+
+describe('<%= classify(module) %><%= classify(name) %>Container', () => {
+  let component: <%= classify(module) %><%= classify(name) %>Container;
+  let fixture: ComponentFixture<<%= classify(module) %><%= classify(name) %>Container>;
+  let store: MockStore<State>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [<%= classify(module) %><%= classify(name) %>Container],
+      imports: [],
+      providers: [
+        <%= classify(module) %>Service,
+        provideMockStore({
+          initialState: createState({
+            loading: false
+          })
+        }),
+      ]
+    }).compileComponents();
+  }));
+
+  beforeEach(() => {
+    store = TestBed.get(Store);
+    store.setState(
+      createState({
+        loading: false
+      }),
+    );
+
+    fixture = TestBed.createComponent(<%= classify(module) %><%= classify(name) %>Container);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

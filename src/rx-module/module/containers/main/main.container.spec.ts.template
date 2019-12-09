@@ -2,27 +2,25 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { Store } from '@ngrx/store';
 
-import { SharedModule } from '@app/shared';
-
-import { State, I<%= classify(name) %>State } from '../../<%= name %>.model';
-import { <%= classify(name) %>Service } from '../../<%= name %>.service';
-import { <%= classify(name) %>ContainerComponent } from './container.component';
+import { State, I<%= classify(name) %>State } from '../../<%= dasherize(name) %>.model';
+import { <%= classify(name) %>Service } from '../../<%= dasherize(name) %>.service';
+import { <%= classify(name) %>MainContainer } from './main.container';
 
 function createState(state: I<%= classify(name) %>State): State {
   return {
-    '<%= name %>': state
+    '<%= dasherize(name) %>': state
   } as State;
 }
 
-describe('<%= classify(name) %>ContainerComponent', () => {
-  let component: <%= classify(name) %>ContainerComponent;
-  let fixture: ComponentFixture<<%= classify(name) %>ContainerComponent>;
+describe('<%= classify(name) %>MainContainer', () => {
+  let component: <%= classify(name) %>MainContainer;
+  let fixture: ComponentFixture<<%= classify(name) %>MainContainer>;
   let store: MockStore<State>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [<%= classify(name) %>ContainerComponent],
-      imports: [SharedModule],
+      declarations: [<%= classify(name) %>MainContainer],
+      imports: [],
       providers: [
         <%= classify(name) %>Service,
         provideMockStore({
@@ -42,7 +40,7 @@ describe('<%= classify(name) %>ContainerComponent', () => {
       }),
     );
 
-    fixture = TestBed.createComponent(<%= classify(name) %>ContainerComponent);
+    fixture = TestBed.createComponent(<%= classify(name) %>MainContainer);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
