@@ -50,9 +50,9 @@ export function rxModule(options: any): Rule {
 
     switch (true) {
       case options.container === true: {
-        const module = options.module;
+        const moduleName = options.module;
 
-        if (!module || typeof module !== 'string') {
+        if (!moduleName || typeof moduleName !== 'string') {
           throw new Error(
             'You should specify the module. Example: --module=todo',
           );

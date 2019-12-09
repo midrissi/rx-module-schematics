@@ -7,9 +7,19 @@
     "name": {
       "type": "string",
       "description": "Module name"
+    },
+    "container": {
+      "type": "boolean",
+      "description": "Is a container?"
+    },
+    "module": {
+      "type": "string",
+      "description": "Module name"
+    },
+    "dryRun": {
+      "type": "boolean",
+      "description": "Simulate?"
     }
   },
-  "required": [
-    "name"
-  ]
+  "required": ["name"]
 }
