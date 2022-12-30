@@ -39,7 +39,7 @@
     "jasmine": "^3.5.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
-    "release-it": "^12.4.3",
+    "release-it": "^15.6.0",
     "tslint": "^5.20.1",
     "typescript": "~3.7.2"
   },
